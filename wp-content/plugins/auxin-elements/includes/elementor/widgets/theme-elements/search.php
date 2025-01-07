@@ -202,7 +202,7 @@ class SearchBox extends Widget_Base {
                 'type'        => Controls_Manager::COLOR,
                 'default'     => 'transparent',
                 'selectors'  => array(
-                    '{{WRAPPER}} .aux-search-form .aux-submit-icon-container,{{WRAPPER}} .aux-search-section button.aux-search-icon' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .aux-search-form .aux-submit-icon-container,{{WRAPPER}} .aux-search-section button.aux-search-icon, {{WRAPPER}} .aux-search-section svg.aux-search-icon' => 'background-color: {{VALUE}}',
                 )
             )
         );
@@ -223,6 +223,7 @@ class SearchBox extends Widget_Base {
                 ),
                 'selectors' => array(
                     '{{WRAPPER}} .aux-search-icon:before, {{WRAPPER}} .aux-submit-icon-container:before' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} svg' => 'font-size: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};width: auto;',
                 )
             )
         );
@@ -235,6 +236,7 @@ class SearchBox extends Widget_Base {
                 'default'     => '#303030',
                 'selectors' => array(
                     '{{WRAPPER}} .aux-search-icon:before, {{WRAPPER}} .aux-submit-icon-container:before' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} svg' => 'fill: {{VALUE}};',
                 )
             )
         );
@@ -495,7 +497,7 @@ class SearchBox extends Widget_Base {
 
         }
 
-        $icon_value = ! empty( $settings['aux_search_icon']['value'] ) ? $settings['aux_search_icon']['value'] : ( ! empty( $settings['icon'] ) ? $settings['icon'] : 'auxicon-search-4' ) ;
+        $icon_value = ! empty( $settings['aux_search_icon']['value'] ) ? $settings['aux_search_icon'] : ( ! empty( $settings['icon'] ) ? $settings['icon'] : 'auxicon-search-4' ) ;
 
         $args['icon_classname'] = $icon_value;
         $args['css_class'] = 'aux-search-elementor-element';

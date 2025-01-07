@@ -100,7 +100,8 @@ class Auxels_WC_Attribute_Nav_Menu {
         }
 
         foreach ( $taxonomies as $slug => $label ) {
-            $terms = get_terms( 'pa_' . $slug, array(
+            $terms = get_terms( array(
+                'taxonomy' => 'pa_' . $slug,
                 'hide_empty' => false,
             ) );
 
@@ -137,7 +138,8 @@ class Auxels_WC_Attribute_Nav_Menu {
                     <?php
                     $i = -1;
                     foreach ( $taxonomies as $slug => $label ) :
-                        $terms = get_terms( 'pa_' . $slug, array(
+                        $terms = get_terms( array(
+                            'taxonomy' => 'pa_' . $slug,
                             'hide_empty' => false,
                         ) );
                         foreach ( $terms as $term ) {

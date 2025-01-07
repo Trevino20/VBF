@@ -12,7 +12,11 @@
 
 function auxin_get_popular_post_widget_master_array( $master_array ) {
 
-    $categories = get_terms( 'category', 'orderby=count&hide_empty=0' );
+    $categories = get_terms([  
+        'taxonomy'   => 'category',  
+        'orderby'    => 'count',  
+        'hide_empty' => false,
+    ]);  
     $categories_list = array( '' => __('All Categories', 'auxin-elements' ) );
     foreach ( $categories as $key => $value ) {
         $categories_list[$value->term_id] = $value->name;

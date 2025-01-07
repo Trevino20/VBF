@@ -51,7 +51,7 @@ class Auxin_Widget extends WP_Widget {
         foreach ( $this->fields as $field ) {
             $this->defaults[ $field["id"] ] = $field["value"];
         }
-        $this->defaults[ '__uid' ] = $this->widget_info['base_ID'] . '_' . substr( uniqid( ''. rand() ), -8 );
+        $this->defaults[ '__uid' ] = $this->widget_info['base_ID'] . '_' . substr( uniqid( ''. wp_rand() ), -8 );
     }
 
     //
@@ -507,7 +507,7 @@ class Auxin_Widget extends WP_Widget {
                 $instance[ $id ] = esc_sql( $new_instance[ $id ] );
 
             } else {
-                $instance[ $id ] = is_array( $new_instance[ $id ] ) ? $new_instance[ $id ] : strip_tags( $new_instance[ $id ] );
+                $instance[ $id ] = is_array( $new_instance[ $id ] ) ? $new_instance[ $id ] : wp_strip_all_tags( $new_instance[ $id ] );
             }
 
         }

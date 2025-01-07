@@ -60,7 +60,7 @@ class Auxin_Widget_Indie extends WP_Widget {
 
         foreach ( $this->fields as $field ) {
             $id = $field["id"];
-            $instance[ $id ] = strip_tags( $new_instance[ $id ] );
+            $instance[ $id ] = wp_strip_all_tags( $new_instance[ $id ] );
         }
 
         return $instance;

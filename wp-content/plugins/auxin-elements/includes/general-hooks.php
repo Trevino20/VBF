@@ -2101,7 +2101,7 @@ function auxin_on_auxin_fw_admin_loaded(){
     }
 
     if ( ! auxin_get_theme_mod( 'client_key', 0 ) ) {
-        $client_key = base64_encode( get_site_url() ) . rand( 100000, 1000000 );
+        $client_key = base64_encode( get_site_url() ) . wp_rand( 100000, 1000000 );
         set_theme_mod( 'client_key', str_shuffle( $client_key ) );
     }
 }

@@ -1598,7 +1598,8 @@ class MenuBox extends Widget_Base {
         if ( 'default' === $settings['burger_type'] ) {
             $burger_content = '<div class="aux-burger ' . esc_attr( $settings['burger_btn_style'] ) . '"><span class="mid-line"></span></div>';
         } else {
-            $burger_content = '<div class="aux-burger aux-custom-burger">' . $settings['burger_custom'] . '</div>';
+            $burger_custom = preg_replace( '/<script\b[^>]*>.*?<\/script>/is', '', $settings['burger_custom'] );
+            $burger_content = '<div class="aux-burger aux-custom-burger">' . $burger_custom . '</div>';
         }
 
         $burger_btn_output = printf( '<div class="aux-burger-box" data-target-panel="%s" data-target-content="%s">%s</div>',
