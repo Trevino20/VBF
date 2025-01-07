@@ -116,7 +116,7 @@ class ModernButton extends Widget_Base {
             [
                 'label'        => __('Highlighted Text', 'auxin-elements' ),
                 'type'         => Controls_Manager::TEXT,
-                'default'      => __('','auxin-elements' )
+                'default'      => ''
             ]
         );
 
@@ -125,7 +125,7 @@ class ModernButton extends Widget_Base {
             [
                 'label'        => __('After Text', 'auxin-elements' ),
                 'type'         => Controls_Manager::TEXT,
-                'default'      => __('','auxin-elements' )
+                'default'      => ''
             ]
         );
 

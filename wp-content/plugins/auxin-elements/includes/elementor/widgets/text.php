@@ -442,7 +442,7 @@ class Text extends Widget_Base {
                     ),
                 ),
                 'selectors'  => array(
-                    '{{WRAPPER}} .aux-ico' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .aux-ico' => 'font-size: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};',
                 ),
                 'condition'   => array(
                     'icon_or_image' => array('icon')
@@ -525,7 +525,7 @@ class Text extends Widget_Base {
                 'type'        => Controls_Manager::COLOR,
                 'default'     => '#ffffff',
                 'selectors' => array(
-                    '{{WRAPPER}} .aux-ico-box' => 'color:{{VALUE}};',
+                    '{{WRAPPER}} .aux-ico-box' => 'color:{{VALUE}};fill: {{VALUE}};',
                 ),
                 'condition'   => array(
                     'icon_or_image' => array('icon')
@@ -1644,10 +1644,10 @@ class Text extends Widget_Base {
         $main_icon  = '';
 
         if( 'icon' == $settings['icon_or_image'] ){
-            $main_icon = ! empty( $settings['aux_text_icon']['value'] ) ? $settings['aux_text_icon']['value'] : ( ! empty( $settings['icon'] ) ? $settings['icon'] : '' ) ;
+            $main_icon = ! empty( $settings['aux_text_icon']['value'] ) ? $settings['aux_text_icon'] : ( ! empty( $settings['icon'] ) ? $settings['icon'] : '' ) ;
         }
 
-        $btn_icon_value = ! empty( $settings['aux_text_btn_icon']['value'] ) ? $settings['aux_text_btn_icon']['value'] : ( ! empty( $settings['btn_icon'] ) ? $settings['btn_icon'] : '' ) ;
+        $btn_icon_value = ! empty( $settings['aux_text_btn_icon']['value'] ) ? $settings['aux_text_btn_icon'] : ( ! empty( $settings['btn_icon'] ) ? $settings['btn_icon'] : '' ) ;
 
         $args       = array(
             'title'              => $settings['title'],

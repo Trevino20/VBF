@@ -91,7 +91,12 @@ class RecentPostsGridCarousel extends Widget_Base {
      * @return string Widget icon.
      */
     public function get_terms() {
-        $terms = get_terms( 'category', 'orderby=count&hide_empty=0' );
+        $terms = get_terms([  
+            'taxonomy'   => 'category',  
+            'orderby'    => 'count',  
+            'hide_empty' => false,
+        ]);  
+        
         $list  = array( ' ' => __('All Categories', 'auxin-elements' ) ) ;
         foreach ( $terms as $key => $value ) {
             $list[$value->term_id] = $value->name;

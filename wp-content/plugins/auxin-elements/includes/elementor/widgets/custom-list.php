@@ -905,7 +905,7 @@ class CustomList extends Widget_Base {
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#24af29',
                 'selectors' => array(
-                    '{{WRAPPER}} .aux-icon-list-icon' => 'color: {{VALUE}};'
+                    '{{WRAPPER}} .aux-icon-list-icon' => 'color: {{VALUE}};fill: {{VALUE}};'
                 )
             )
         );
@@ -933,7 +933,7 @@ class CustomList extends Widget_Base {
                 'label'     => __( 'Color', 'auxin-elements' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => array(
-                    '{{WRAPPER}} .aux-icon-list-item:hover .aux-icon-list-icon' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .aux-icon-list-item:hover .aux-icon-list-icon' => 'color: {{VALUE}};fill: {{VALUE}};',
                 )
             )
         );
@@ -967,6 +967,7 @@ class CustomList extends Widget_Base {
                 ),
                 'selectors' => array(
                     '{{WRAPPER}} .aux-icon-list-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .aux-icon-list-icon' => 'height: {{SIZE}}{{UNIT}};',
                 ),
                 'separator' => 'before'
             )
@@ -1133,7 +1134,7 @@ class CustomList extends Widget_Base {
 
         foreach ( $settings['list'] as $key => $list_item ) {
 
-            $settings['list'][$key]['icon'] =  ! empty( $list_item['aux_custom_list_icon']['value'] ) ? $list_item['aux_custom_list_icon']['value'] : ( ! empty( $list_item['icon'] ) ? $list_item['icon'] : '' ) ;
+            $settings['list'][$key]['icon'] =  ! empty( $list_item['aux_custom_list_icon']['value'] ) ? $list_item['aux_custom_list_icon'] : ( ! empty( $list_item['icon'] ) ? $list_item['icon'] : '' ) ;
 
         }
 

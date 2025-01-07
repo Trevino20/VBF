@@ -539,10 +539,34 @@ class Select extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} span.element-icon , {{WRAPPER}} img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .element-icon , {{WRAPPER}} img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
+
+		$this->add_responsive_control(
+            'icon_size',
+            array(
+                'label'      => __( 'Size', 'auxin-elements' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => array( 'px', 'em' ),
+                'range'      => array(
+                    'px' => array(
+                        'max' => 100
+                    ),
+                    'em' => array(
+                        'max' => 10
+                    )
+                ),
+				'default' => [
+					'unit' => 'px',
+					'size' => 16,
+				],
+                'selectors' => array(
+                    '{{WRAPPER}} .element-icon' => 'font-size: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};',
+                )
+            )
+        );
 
 		$this->start_controls_tabs( 'item_state_colors' );
 
@@ -560,7 +584,7 @@ class Select extends Widget_Base {
 				'type'    => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .element-icon' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .element-icon' => 'color: {{VALUE}};fill: {{VALUE}};'
 				]
 			)
         );
@@ -603,7 +627,7 @@ class Select extends Widget_Base {
 				'type'    => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} ul li:hover .element-icon' => 'color: {{VALUE}};'
+					'{{WRAPPER}} ul li:hover .element-icon' => 'color: {{VALUE}};fill: {{VALUE}};'
 				]
 			)
         );
@@ -680,7 +704,7 @@ class Select extends Widget_Base {
 					if ( !empty( $settings['select_items'][ $current_item ]['item_icon']['library'] ) && $settings['select_items'][ $current_item ]['item_icon']['library'] == 'svg'  ) {
 						$icon = '<img src="' . esc_url( $settings['select_items'][ $current_item ]['item_icon']['value']['url'] ) . '">';
 					} elseif ( !empty( $settings['select_items'][ $current_item ]['item_icon']['value'] ) ) {
-						$icon = '<span class="element-icon ' . $settings['select_items'][ $current_item ]['item_icon']['value'] . '"></span>';
+						$icon = \Elementor\Icons_Manager::render_font_icon( $settings['select_items'][ $current_item ]['item_icon'], [ 'aria-hidden' => 'true', 'class' => 'element-icon' ] );
 					} else {
 						$icon = '';
 					}
@@ -691,7 +715,7 @@ class Select extends Widget_Base {
 				if ( !empty( $settings['dropdown_icon']['library'] ) && $settings['dropdown_icon']['library'] == 'svg'  ) {
 					echo '<img class="dropdown-icon" src="' . esc_url( $settings['dropdown_icon']['value']['url'] ) . '">';
 				} elseif ( !empty( $settings['dropdown_icon']['value'] ) ) {
-					echo '<span class="dropdown-icon ' . esc_attr( $settings['dropdown_icon']['value'] ) . '"></span>';
+					echo \Elementor\Icons_Manager::render_font_icon( $settings['dropdown_icon'], [ 'aria-hidden' => 'true', 'class' => 'dropdown-icon' ] );    
 				}
 				?>
 			</span>
@@ -764,7 +788,7 @@ class Select extends Widget_Base {
 		foreach( $settings['select_items'] as $key => $item ) {
 			$item_link = !empty( $item['is_language_switcher'] ) ? $this->get_item_language_link($item) : rtrim( $item['item_link']['url'], '/' );
 			if ( !empty( $item_link ) ) {
-				$query = parse_url($item_link, PHP_URL_QUERY);
+				$query = wp_parse_url($item_link, PHP_URL_QUERY);
 				parse_str($query, $params);
 				if ( !empty( $params ) ) {
 					$paramKeyFound = true;

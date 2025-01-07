@@ -196,7 +196,7 @@ function auxin_widget_code_callback( $atts, $shortcode_content = null ){
     } elseif ( base64_decode( $content, true ) === false ) {
 
     } else {
-        $content = rawurldecode( base64_decode( strip_tags( $content ) ) );
+        $content = rawurldecode( base64_decode( wp_strip_all_tags( $content ) ) );
     }
 
     echo '<div class="hljs-'. esc_attr( $theme ) .'">' .

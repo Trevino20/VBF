@@ -142,13 +142,6 @@ class Breadcrumbs extends Widget_Base {
 						'fa-solid' => [
 							'home'
 						],
-						'auxicon' =>[
-							'home-house-streamline',
-							'home',
-							'home-1',
-							'home-2',
-							'home-3'
-						]
 					],
 					'exclude_inline_options' => [ 'svg' ],
 					'default' => [
@@ -167,25 +160,6 @@ class Breadcrumbs extends Widget_Base {
 					'label'       => __( 'Custom Separator', 'auxin-elements' ),
 					'label_block' => true,
 					'type'        => Controls_Manager::ICONS,
-					'recommended' => [
-						'auxicon2' => [
-							"arrows-right-double-chevron",
-							"arrows-chevron-thin-right",
-							"arrow-slim-right-dashed",
-							"arrow-slim-right",
-							"arrow-chevron-med-right",
-							"arrow-chevron-fat-right",
-							"arrow-chevron-slim-right",
-							"arrow-chevron-pixel-right",
-							"arrow-line-med-right",
-							"arrow-line-right",
-							"arrow-chevron-pixel-right2",
-							"arrow-pixel-fat-right",
-							"arrow-thin-right",
-							"arrow-chevron-small-right",
-							"arrow-circle-right"
-						]
-					],
 					'separator'   => 'before'
 				]
 			);
@@ -256,7 +230,7 @@ class Breadcrumbs extends Widget_Base {
 						'default' => Global_Colors::COLOR_PRIMARY,
 					],
 					'selectors' => [
-						'{{WRAPPER}} span.aux-breadcrumb-home' => 'color: {{VALUE}};',
+						'{{WRAPPER}} span.aux-breadcrumb-home' => 'color: {{VALUE}}; fill: {{VALUE}};',
 					]
 				]
 			);
@@ -268,7 +242,7 @@ class Breadcrumbs extends Widget_Base {
 					'type' => Controls_Manager::SLIDER,
 					'size_units' => [ 'px', '%', 'em' ],
 					'selectors' => [
-						'{{WRAPPER}} .aux-breadcrumb-home' => 'font-size:{{SIZE}}{{UNIT}};'
+						'{{WRAPPER}} .aux-breadcrumb-home' => 'font-size:{{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};'
 					]
 				]
 			);
@@ -386,7 +360,7 @@ class Breadcrumbs extends Widget_Base {
 						'default' => Global_Colors::COLOR_PRIMARY,
 					],
 					'selectors' => [
-						'{{WRAPPER}} span.aux-breadcrumb-sep' => 'color: {{VALUE}};',
+						'{{WRAPPER}} span.aux-breadcrumb-sep' => 'color: {{VALUE}};fill: {{VALUE}};',
 					]
 				]
 			);
@@ -398,7 +372,7 @@ class Breadcrumbs extends Widget_Base {
 					'type' => Controls_Manager::SLIDER,
 					'size_units' => [ 'px', '%', 'em' ],
 					'selectors' => [
-						'{{WRAPPER}} .aux-breadcrumb-sep' => 'font-size:{{SIZE}}{{UNIT}};'
+						'{{WRAPPER}} .aux-breadcrumb-sep' => 'font-size:{{SIZE}}{{UNIT}};height:{{SIZE}}{{UNIT}};'
 					]
 				]
 			);
@@ -571,8 +545,8 @@ class Breadcrumbs extends Widget_Base {
   	protected function render() {
 		$settings = $this->get_settings_for_display();
 
-		$home_icon = isset( $settings['show_home_icon'] ) && auxin_is_true( $settings['show_home_icon'] ) ? $settings['home_icon']['value'] : '';
-		$separator_icon = isset( $settings['separator_icon']['value'] ) ? $settings['separator_icon']['value'] : '';
+		$home_icon = isset( $settings['show_home_icon'] ) && auxin_is_true( $settings['show_home_icon'] ) ? $settings['home_icon'] : '';
+		$separator_icon = isset( $settings['separator_icon']['value'] ) ? $settings['separator_icon'] : '';
 
 		echo '<div class="aux-elementor-breadcrumbs">';
 		auxin_the_breadcrumbs( $home_icon, $separator_icon );
