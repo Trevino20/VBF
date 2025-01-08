@@ -12,16 +12,16 @@
 .aux-logo-header .aux-logo-anchor > img { max-height:85px; }
 /* elementor-color-primary 
 =========================*/
-.aux-customize-preview.elementor-kit-7 {--e-global-color-primary: #6EC1E4;}
+.aux-customize-preview.elementor-kit-7 {--e-global-color-primary: rgb(2, 8, 115);}
 /* elementor-color-secondary 
 =========================*/
-.aux-customize-preview.elementor-kit-7 {--e-global-color-secondary: #54595F;}
+.aux-customize-preview.elementor-kit-7 {--e-global-color-secondary: rgb(39, 99, 167);}
 /* elementor-color-text 
 =========================*/
-.aux-customize-preview.elementor-kit-7 {--e-global-color-text: #7A7A7A;}
+.aux-customize-preview.elementor-kit-7 {--e-global-color-text: rgb(0, 0, 0);}
 /* elementor-color-accent 
 =========================*/
-.aux-customize-preview.elementor-kit-7 {--e-global-color-accent: #61CE70;}
+.aux-customize-preview.elementor-kit-7 {--e-global-color-accent: rgb(131, 83, 170);}
 /* site-frame-background-color 
 =========================*/
 @media screen and (min-width: 700px) { .aux-framed .aux-side-frames, body.aux-framed:after, .aux-framed .aux-side-frames:before, .aux-framed .aux-side-frames:after {background-color:#111111;}}
